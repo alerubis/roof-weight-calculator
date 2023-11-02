@@ -17,7 +17,7 @@ export const elencoMateriali: Materiale[] = [
     { id: 2,  descrizione: 'Tavolato abete',      valore: 450 },
     { id: 3,  descrizione: 'Pannello osb',        valore: 650 },
     { id: 4,  descrizione: 'Secondo tavolato',    valore: 450 },
-    { id: 5,  descrizione: 'Lana di roccia',      valore: 150 },
+    { id: 5,  descrizione: 'Lana di roccia',      valore: 120 },
     { id: 6,  descrizione: 'Lana di vetro',       valore: 20  },
     { id: 7,  descrizione: 'Fibra di legno',      valore: 210 },
     { id: 8,  descrizione: 'Sughero',             valore: 260 },

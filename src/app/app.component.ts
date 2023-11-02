@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { slideInUpOnEnterAnimation } from 'angular-animations';
-import { Lavorazione, Materiale, elencoLavorazioni, elencoMateriali } from './app.data';
+import packageJson from '../../package.json';
+import { Materiale, elencoLavorazioni, elencoMateriali } from './app.data';
 
 @Component({
     selector: 'app-root',
@@ -16,6 +17,8 @@ export class AppComponent implements OnInit {
 
     mostraValori: boolean = false;
 
+    version = packageJson.version;
+
     ngOnInit(): void {
     }
 
@@ -30,7 +33,9 @@ export class AppComponent implements OnInit {
         if (!materiale.spessore) {
             materiale.spessore = 0;
         }
-        materiale.spessore -= 1;
+        if (materiale.spessore > 0) {
+            materiale.spessore -= 1;
+        }
     }
 
     getTotale(): number {

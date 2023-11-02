@@ -2,12 +2,13 @@
     <div class="flex flex-row items-center justify-center gap-2 w-full">
         <mat-icon>roofing</mat-icon>
         <div class="font-light text-xl">Roof Weight Calculator</div>
+        <div class="font-light text-xs text-gray-300 pt-1">v. {{ version }}</div>
     </div>
 </mat-toolbar>
 
-<div class="flex flex-col w-full">
+<div class="flex flex-col items-center w-full">
 
-    <div class="flex flex-col gap-6 pt-6 pb-28">
+    <div class="flex flex-col gap-6 pt-6 pb-28 w-full max-w-5xl">
 
         <!-- #region Impostazioni -->
         <div class="flex flex-col border">
@@ -89,8 +90,8 @@
 
 </div>
 
-<div class="fixed w-full bottom-0 p-6" [@slideInUpOnEnter]>
-    <div class="flex flex-row items-center justify-center gap-6 w-full h-16 bg-accent text-white rounded-full">
+<div class="flex flex-col items-center fixed w-full bottom-0 p-6" [@slideInUpOnEnter]>
+    <div class="flex flex-row items-center justify-center gap-6 w-full max-w-5xl h-16 bg-accent text-white rounded-full">
         <div class="text-2xl font-semibold">
             {{ getTotale() | number : '1.0-2' : 'it-IT' }} Kg
         </div>
