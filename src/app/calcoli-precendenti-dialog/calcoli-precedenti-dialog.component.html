@@ -1,0 +1,44 @@
+<div class="flex flex-col">
+
+    <mat-toolbar color="accent" class="border-b shadow">
+        <div class="flex flex-row items-center justify-between gap-6 w-full">
+            <div class="flex flex-row items-center gap-2 flex-auto">
+                <mat-icon>history</mat-icon>
+                <div class="">Calcoli precedenti</div>
+            </div>
+            <button mat-icon-button (click)="matDialogRef.close()">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar>
+
+    <div class="flex flex-col overflow-y-auto">
+
+        <div *ngIf="!calcoliPrecedenti || calcoliPrecedenti.length === 0" class="flex flex-col items-center justify-center gap-6 p-6">
+            <mat-icon class="big-icon">history</mat-icon>
+            <div class="text-center">
+                Nessun calcolo salvato su questo dispositivo
+            </div>
+        </div>
+
+        <div *ngIf="calcoliPrecedenti && calcoliPrecedenti.length > 0" class="flex flex-col divide-y border-b">
+            <div *ngFor="let calcolo of calcoliPrecedenti" class="flex flex-row items-center justify-between px-6 py-3">
+                <div class="flex flex-col">
+                    <div>{{ (calcolo.data | date : 'EEEE MM MMMM YYYY, HH:mm' : 'it-IT') | titlecase }}</div>
+                    <div class="text-sm text-gray-500">{{ calcolo.countMateriali }} materiali, {{ calcolo.countLavorazioni }} lavorazioni</div>
+                    <div class="text-sm text-gray-500">Totale: {{ calcolo.totale | number : '1.0-2' : 'it-IT' }} Kg</div>
+                </div>
+                <div class="flex flex-row items-center justify-end">
+                    <button mat-icon-button color="accent" (click)="visualizzaCalcolo(calcolo)" matTooltip="Visualizza calcolo">
+                        <mat-icon>pageview</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" (click)="eliminaCalcolo(calcolo)" matTooltip="Elimina calcolo">
+                        <mat-icon>delete_forever</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
