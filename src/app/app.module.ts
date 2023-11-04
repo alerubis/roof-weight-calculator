@@ -3,12 +3,16 @@ import { LOCALE_ID, NgModule, isDevMode } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
+import { CalcoliPrecedentiDialogComponent } from './calcoli-precendenti-dialog/calcoli-precedenti-dialog.component';
 
 import localeIt from '@angular/common/locales/it';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -16,7 +20,8 @@ registerLocaleData(localeIt);
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        CalcoliPrecedentiDialogComponent,
     ],
     imports: [
         BrowserModule,
@@ -24,9 +29,12 @@ registerLocaleData(localeIt);
         FormsModule,
         MatButtonModule,
         MatCheckboxModule,
+        MatDialogModule,
         MatIconModule,
         MatSlideToggleModule,
+        MatSnackBarModule,
         MatToolbarModule,
+        MatTooltipModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
           enabled: !isDevMode(),
           // Register the ServiceWorker as soon as the application is stable

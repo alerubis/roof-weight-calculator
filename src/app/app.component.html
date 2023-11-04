@@ -1,8 +1,8 @@
 <mat-toolbar color="accent" class="border-b shadow">
-    <div class="flex flex-row items-center justify-center gap-2 w-full">
-        <mat-icon>roofing</mat-icon>
+    <div class="flex flex-row items-center justify-center gap-3 w-full">
+        <img src="assets/images/logo.png" alt="" class="w-12 h-12">
         <div class="font-light text-xl">Roof Weight Calculator</div>
-        <div class="font-light text-xs text-gray-300 pt-1">v. {{ version }}</div>
+        <div class="font-light text-xs text-gray-300 pt-1.5">v. {{ version }}</div>
     </div>
 </mat-toolbar>
 
@@ -20,6 +20,15 @@
                 <div class="flex flex-row items-center justify-between px-4 py-2">
                     <div>Mostra valori</div>
                     <mat-slide-toggle [(ngModel)]="mostraValori"></mat-slide-toggle>
+                </div>
+                <div class="flex flex-row items-center justify-between px-4 py-2">
+                    <div class="flex flex-row items-center gap-1">
+                        <div>Calcoli precedenti</div>
+                        <mat-icon class="material-icons-outlined text-gray-500" matTooltip="Premi sul bottone del totale per salvare il calcolo corrente" #tooltipCalcoliPrecedenti="matTooltip" (click)="tooltipCalcoliPrecedenti.toggle()">info</mat-icon>
+                    </div>
+                    <button mat-button color="accent" (click)="calcoliPrecedenti()">
+                        Visualizza
+                    </button>
                 </div>
             </div>
         </div>
@@ -91,7 +100,7 @@
 </div>
 
 <div class="flex flex-col items-center fixed w-full bottom-0 p-6" [@slideInUpOnEnter]>
-    <div class="flex flex-row items-center justify-center gap-6 w-full max-w-5xl h-16 bg-accent text-white rounded-full">
+    <div class="flex flex-row items-center justify-center gap-6 w-full max-w-5xl h-16 bg-accent text-white rounded-full cursor-pointer" (click)="saveCalcolo()">
         <div class="text-2xl font-semibold">
             {{ getTotale() | number : '1.0-2' : 'it-IT' }} Kg
         </div>
