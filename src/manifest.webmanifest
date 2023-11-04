@@ -1,7 +1,7 @@
 {
   "name": "Roof Weight Calculator",
   "short_name": "Roof Weight Calc",
-  "theme_color": "#206bc4",
+  "theme_color": "#32602c",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",

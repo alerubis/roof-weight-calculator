@@ -22,19 +22,24 @@
         </div>
 
         <div *ngIf="calcoliPrecedenti && calcoliPrecedenti.length > 0" class="flex flex-col divide-y border-b">
-            <div *ngFor="let calcolo of calcoliPrecedenti" class="flex flex-row items-center justify-between px-6 py-3">
-                <div class="flex flex-col">
-                    <div>{{ (calcolo.data | date : 'EEEE MM MMMM YYYY, HH:mm' : 'it-IT') | titlecase }}</div>
-                    <div class="text-sm text-gray-500">{{ calcolo.countMateriali }} materiali, {{ calcolo.countLavorazioni }} lavorazioni</div>
-                    <div class="text-sm text-gray-500">Totale: {{ calcolo.totale | number : '1.0-2' : 'it-IT' }} Kg</div>
+            <div *ngFor="let calcolo of calcoliPrecedenti" class="flex flex-col px-6 py-3">
+                <div class="font-bold">
+                    {{ calcolo.descrizione }}
                 </div>
-                <div class="flex flex-row items-center justify-end">
-                    <button mat-icon-button color="accent" (click)="visualizzaCalcolo(calcolo)" matTooltip="Visualizza calcolo">
-                        <mat-icon>pageview</mat-icon>
-                    </button>
-                    <button mat-icon-button color="warn" (click)="eliminaCalcolo(calcolo)" matTooltip="Elimina calcolo">
-                        <mat-icon>delete_forever</mat-icon>
-                    </button>
+                <div class="flex flex-row items-center justify-between gap-3">
+                    <div class="flex flex-col">
+                        <div class="text-sm text-gray-500">{{ (calcolo.data | date : 'EEEE MM MMMM YYYY, HH:mm' : 'it-IT') | titlecase }}</div>
+                        <div class="text-sm text-gray-500">{{ calcolo.countMateriali }} materiali, {{ calcolo.countLavorazioni }} lavorazioni</div>
+                        <div class="text-sm text-gray-500">Totale: {{ calcolo.totale | number : '1.0-2' : 'it-IT' }} Kg</div>
+                    </div>
+                    <div class="flex flex-row items-center justify-end">
+                        <button mat-icon-button color="accent" (click)="visualizzaCalcolo(calcolo)" matTooltip="Visualizza calcolo">
+                            <mat-icon>pageview</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn" (click)="eliminaCalcolo(calcolo)" matTooltip="Elimina calcolo">
+                            <mat-icon>delete_forever</mat-icon>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

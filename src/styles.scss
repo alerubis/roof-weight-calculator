@@ -45,20 +45,20 @@ $primary-palette: (
 );
 
 $accent-palette: (
-    50 : #e4edf8,
-    100 : #bcd3ed,
-    200 : #90b5e2,
-    300 : #6397d6,
-    400 : #4181cd,
-    500 : #206bc4,
-    600 : #1c63be,
-    700 : #1858b6,
-    800 : #134eaf,
-    900 : #0b3ca2,
-    A100 : #cfdcff,
-    A200 : #9cb7ff,
-    A400 : #6992ff,
-    A700 : #5080ff,
+    50 : #e6ece6,
+    100 : #c2cfc0,
+    200 : #99b096,
+    300 : #70906b,
+    400 : #51784c,
+    500 : #32602c,
+    600 : #2d5827,
+    700 : #264e21,
+    800 : #1f441b,
+    900 : #133310,
+    A100 : #7bff71,
+    A200 : #4bff3e,
+    A400 : #1cff0b,
+    A700 : #11f100,
     contrast: (
         50 : #000000,
         100 : #000000,
@@ -132,35 +132,9 @@ body {
     color: mat.get-color-from-palette($roof-weight-calculator-accent, 500);
 }
 
-// Tables
-.data-table {
-    width: 100%;
-
-    tr {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-    }
-
-    th {
-        background-color: rgba(248, 250, 252);
-        font-size: 12px;
-    }
-
-    th, td {
-        font-weight: normal;
-        padding: 4px 12px 4px 0px;
-
-        &:first-of-type {
-            padding-left: 12px;
-        }
-    }
-
-    tfoot tr {
-        background-color: rgba(248, 250, 252);
-
-        td {
-            font-weight: bold;
-        }
-    }
+// Material
+.mdc-text-field--focused .mdc-notched-outline__notch {
+    border-right-style: none !important;
 }
 
 .lg-icon {

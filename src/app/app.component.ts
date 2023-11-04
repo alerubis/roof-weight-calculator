@@ -4,7 +4,7 @@ import { slideInUpOnEnterAnimation } from 'angular-animations';
 import packageJson from '../../package.json';
 import { CalcoloPrecedente, Materiale, elencoLavorazioni, elencoMateriali } from './app.data';
 import { CalcoliPrecedentiDialogComponent } from './calcoli-precendenti-dialog/calcoli-precedenti-dialog.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { SalvaCalcoloDialogComponent } from './salva-calcolo-dialog/salva-calcolo-dialog.component';
 
 @Component({
     selector: 'app-root',
@@ -24,7 +24,6 @@ export class AppComponent {
 
     constructor(
         private _matDialog: MatDialog,
-        private _matSnackBar: MatSnackBar,
     ) {
 
     }
@@ -33,15 +32,15 @@ export class AppComponent {
         if (!materiale.spessore) {
             materiale.spessore = 0;
         }
-        materiale.spessore += 1;
+        materiale.spessore = parseFloat((materiale.spessore + 0.01).toFixed(2));
     }
 
     togliSpessore(materiale: Materiale): void {
         if (!materiale.spessore) {
             materiale.spessore = 0;
         }
-        if (materiale.spessore > 0) {
-            materiale.spessore -= 1;
+        if (materiale.spessore >= 0.01) {
+            materiale.spessore = parseFloat((materiale.spessore - 0.01).toFixed(2));
         }
     }
 
@@ -99,25 +98,17 @@ export class AppComponent {
     }
 
     saveCalcolo(): void {
-        try {
-            let calcoliPrecedenti: CalcoloPrecedente[] = [];
-            const calcoliPrecedentiFromLocalStorage = localStorage.getItem('roof-weight-calculator.calcoli-precedenti');
-            if (calcoliPrecedentiFromLocalStorage) {
-                calcoliPrecedenti = JSON.parse(calcoliPrecedentiFromLocalStorage) || [];
+        this._matDialog.open(SalvaCalcoloDialogComponent, {
+            height: 'auto',
+            width: '90%',
+            maxWidth: '800px',
+            maxHeight: '640px',
+            data: {
+                elencoMateriali: this.elencoMateriali,
+                elencoLavorazioni: this.elencoLavorazioni,
+                totale: this.getTotale(),
             }
-            const calcolo = new CalcoloPrecedente();
-            calcolo.id = calcoliPrecedenti.length + 1;
-            calcolo.materiali = this.elencoMateriali;
-            calcolo.lavorazioni = this.elencoLavorazioni;
-            calcolo.countMateriali = this.elencoMateriali.filter(x => x.spessore).length;
-            calcolo.countLavorazioni = this.elencoLavorazioni.filter(x => x.selezionato).length;
-            calcolo.totale = this.getTotale();
-            calcoliPrecedenti.unshift(calcolo);
-            localStorage.setItem('roof-weight-calculator.calcoli-precedenti', JSON.stringify(calcoliPrecedenti));
-            this._matSnackBar.open('Calcolo salvato con successo.', 'Ok');
-        } catch (error) {
-
-        }
+        });
     }
 
 }

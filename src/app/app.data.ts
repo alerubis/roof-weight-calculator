@@ -48,6 +48,7 @@ export const elencoLavorazioni: Lavorazione[] = [
 
 export class CalcoloPrecedente {
     id: number = 0;
+    descrizione: string = '';
     data: Date = new Date();
     materiali: Materiale[] = [];
     lavorazioni: Lavorazione[] = [];
